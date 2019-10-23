@@ -1,0 +1,10 @@
+#language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t drnickit/dockerfrontend -f profiles/dev/Dockerfile .
+
+script:
+  - docker run -e CI=true drnickit/dockerfrontend npm run test
